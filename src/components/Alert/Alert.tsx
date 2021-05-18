@@ -80,7 +80,7 @@ const Alert: React.FC<AlertProps> = ({ title, children, variant, onClick }) => {
   return (
     <StyledAlert>
       <IconLabel variant={variant} hasDescription={!!children}>
-        <Icon color="currentColor" width="24px" />
+        <img src="https://snowge.s3.amazonaws.com/snowgeswap/Snowge_Nerd.png" width="40px"/>
       </IconLabel>
       <Details hasHandler={!!onClick}>
         <Text bold>{title}</Text>

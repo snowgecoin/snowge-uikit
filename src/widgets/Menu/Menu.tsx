@@ -4,7 +4,8 @@ import throttle from "lodash/throttle";
 import Overlay from "../../components/Overlay/Overlay";
 import Flex from "../../components/Box/Flex";
 import { useMatchBreakpoints } from "../../hooks";
-// import logo from "./SnowgeSwapLogo.png";
+import MenuButton from "./components/MenuButton";
+import { HamburgerIcon, HamburgerCloseIcon } from "./icons";
 import Panel from "./components/Panel";
 import UserBlock from "./components/UserBlock";
 import { NavProps } from "./types";
@@ -59,6 +60,10 @@ const MobileOnlyOverlay = styled(Overlay)`
   ${({ theme }) => theme.mediaQueries.nav} {
     display: none;
   }
+`;
+
+const MenuFlex = styled(Flex)`
+  align-items: center;
 `;
 
 const Menu: React.FC<NavProps> = ({
@@ -116,7 +121,16 @@ const Menu: React.FC<NavProps> = ({
   return (
     <Wrapper>
       <StyledNav showMenu={showMenu}>
-        <img src='https://snowge.s3.amazonaws.com/SnowgeSwapLogo.png' width='200px'/>
+        <MenuFlex>
+          <MenuButton aria-label="Toggle menu" onClick={() => setIsPushed(!isPushed)} mr="24px">
+            {isPushed ? (
+              <HamburgerCloseIcon width="24px" color="textSubtle" />
+            ) : (
+              <HamburgerIcon width="24px" color="textSubtle" />
+            )}
+          </MenuButton>
+          <img src='https://snowge.s3.amazonaws.com/SnowgeSwapLogo.png' width='200px'/>
+        </MenuFlex>
         <Flex>
           <UserBlock account={account} login={login} logout={logout} />
         </Flex>
